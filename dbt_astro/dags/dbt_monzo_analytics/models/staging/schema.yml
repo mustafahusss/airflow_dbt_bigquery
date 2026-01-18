@@ -1,0 +1,11 @@
+models:
+  - name: stg_transactions
+    columns:
+      - name: id
+        data_tests:
+          - unique
+          - not_null
+      - name: created
+        data_tests:
+          - unique
+          - not_null

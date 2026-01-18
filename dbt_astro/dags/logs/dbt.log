@@ -1,0 +1,51 @@
+[0m14:05:06.836951 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105117390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x105189cd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10518a690>]}
+
+
+============================== 14:05:06.839343 | 6f4f6660-0d32-47ff-be61-d0bb2725b99d ==============================
+[0m14:05:06.839343 [info ] [MainThread]: Running with dbt=1.11.2
+[0m14:05:06.839708 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'version_check': 'True', 'printer_width': '80', 'use_experimental_parser': 'False', 'log_format': 'default', 'profiles_dir': '/Users/mustafahussain/.dbt', 'static_parser': 'True', 'quiet': 'False', 'cache_selected_only': 'False', 'log_path': 'logs', 'introspect': 'True', 'debug': 'False', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'target_path': 'None', 'empty': 'None', 'log_cache_events': 'False', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'no_print': 'None', 'indirect_selection': 'eager', 'write_json': 'True', 'invocation_command': 'dbt init dbt_monzo_analytics'}
+[0m14:05:06.849080 [debug] [MainThread]: Starter project path: /Users/mustafahussain/anaconda3/lib/python3.11/site-packages/dbt/include/starter_project
+[0m14:05:06.852556 [info ] [MainThread]: 
+Your new dbt project "dbt_monzo_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m14:05:06.852720 [info ] [MainThread]: Setting up your profile.
+[0m14:10:56.682976 [info ] [MainThread]: Profile dbt_monzo_analytics written to /Users/mustafahussain/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m14:10:56.703962 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 349.89838, "process_in_blocks": "0", "process_kernel_time": 2.074802, "process_mem_max_rss": "402800640", "process_out_blocks": "0", "process_user_time": 4.536381}
+[0m14:10:56.718249 [debug] [MainThread]: Command `dbt init` succeeded at 14:10:56.718130 after 349.92 seconds
+[0m14:10:56.721021 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1051053d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1051af790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104f13090>]}
+[0m14:10:56.722833 [debug] [MainThread]: Flushing usage events
+[0m14:10:57.340341 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:13:37.614359 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1128159d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112891e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1128927d0>]}
+
+
+============================== 14:13:37.616843 | 7c1fd92c-02c4-4b4f-960a-f5b0b8917c97 ==============================
+[0m14:13:37.616843 [info ] [MainThread]: Running with dbt=1.11.2
+[0m14:13:37.617133 [debug] [MainThread]: running dbt with arguments {'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'log_cache_events': 'False', 'target_path': 'None', 'introspect': 'True', 'use_colors': 'True', 'warn_error': 'None', 'no_print': 'None', 'static_parser': 'True', 'empty': 'None', 'version_check': 'True', 'partial_parse': 'True', 'printer_width': '80', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'debug': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'use_experimental_parser': 'False', 'invocation_command': 'dbt debug', 'write_json': 'True', 'profiles_dir': '/Users/mustafahussain/.dbt', 'quiet': 'False'}
+[0m14:13:37.625515 [info ] [MainThread]: dbt version: 1.11.2
+[0m14:13:37.625688 [info ] [MainThread]: python version: 3.11.4
+[0m14:13:37.625828 [info ] [MainThread]: python path: /Users/mustafahussain/anaconda3/bin/python3.11
+[0m14:13:37.625944 [info ] [MainThread]: os info: macOS-15.6.1-arm64-arm-64bit
+[0m14:13:45.380965 [info ] [MainThread]: Using profiles dir at /Users/mustafahussain/.dbt
+[0m14:13:45.381572 [info ] [MainThread]: Using profiles.yml file at /Users/mustafahussain/.dbt/profiles.yml
+[0m14:13:45.381733 [info ] [MainThread]: Using dbt_project.yml file at /Users/mustafahussain/PycharmProjects/Monzo/dbt_astro/dags/dbt_project.yml
+[0m14:13:45.382010 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m14:13:45.382431 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 7.806452, "process_in_blocks": "0", "process_kernel_time": 3.934039, "process_mem_max_rss": "388644864", "process_out_blocks": "0", "process_user_time": 4.910148}
+[0m14:13:45.383105 [debug] [MainThread]: Command `dbt debug` failed at 14:13:45.383049 after 7.81 seconds
+[0m14:13:45.383387 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1128bfe90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x132942d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x112a44e90>]}
+[0m14:13:45.383618 [debug] [MainThread]: Flushing usage events
+[0m14:13:45.976286 [debug] [MainThread]: An error was encountered while trying to flush usage events

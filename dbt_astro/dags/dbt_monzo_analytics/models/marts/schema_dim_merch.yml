@@ -1,0 +1,6 @@
+models:
+  - name: dim_merchants
+    columns:
+      - name: description
+        data_tests:
+          - unique

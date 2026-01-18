@@ -1,0 +1,13 @@
+# Astro Runtime includes the following pre-installed providers packages: https://www.astronomer.io/docs/astro/runtime-image-architecture#provider-packages
+apache-airflow-providers-google==19.3.0
+astronomer-cosmos==1.12.0
+content~=0.0.1
+pandas~=2.3.3
+great_expectations==1.10.0
+protobuf==6.33.4
+dotenv~=0.9.9
+python-dotenv~=1.2.1
+requests~=2.32.5
+
+
+
