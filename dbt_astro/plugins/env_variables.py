@@ -1,0 +1,6 @@
+import os
+
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+GMAIL_ACCOUNT = os.getenv("GMAIL_ACCOUNT")
+GMAIL_PASSWORD = os.getenv("GMAIL_PASSWORD")
+DATASET_ID = os.getenv("DATASET_ID")

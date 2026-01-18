@@ -1,0 +1,4 @@
+project:
+    name: dbt-astro
+postgres:
+  port: 5433
