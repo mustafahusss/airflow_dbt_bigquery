@@ -33,7 +33,7 @@ The pipeline leverages Python for extraction, DBT for transformation, and Airflo
 ## Instructions
 1. Clone the repository
 ```bash
-git clone https://github.com/<your-username>/bigquery-dbt-monzo.git
+git clone https://github.com/<your-username>/airflow_dbt_bigquery.git
 cd bigquery-dbt-monzo
 ```
 
