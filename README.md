@@ -1,7 +1,8 @@
-# Monzo Banking Data Engineering Project (BigQuery, DBT, Airflow, Docker)
-An end-to-end data engineering project built using Google Cloud Platform leveraging data from Monzo's API built on BigQuery visualised in Looker, running locally with Astronomer and Docker.
+# Monzo Banking Data Engineering Pipeline (BigQuery, DBT, Airflow, Docker)
+An end-to-end ELT pipeline transforming raw Monzo banking API data into actionable financial insights. This project implements a Medallion Architecture on BigQuery, featuring Incremental Loading to optimise warehouse costs and processing time.
 
 ## Architecture Diagram
+The following diagram illustrates the data flow from the Monzo API through the Google Cloud ecosystem, orchestrated by Airflow and transformed via dbt.
 
 <img width="3379" height="1509" alt="Untitled-2026-01-18-0207" src="https://github.com/user-attachments/assets/d672f47a-a3ee-4490-a0a4-9d4abfbb0bb7" />
 
@@ -11,14 +12,30 @@ _Created in Excalidraw_
 
 ---
 
-* **API:** Monzo banking data source
-* **Extract & Load:** Python with Great Expectations for extraction and data quality validation
-* **Data Warehouse:** BigQuery medallion architecture (Bronze → Silver → Gold layers)
-* **Test & Transform:** dbt for SQL transformations and testing
-* **Orchestrator:** Airflow pipeline scheduling and execution
-* **Data Visualization:** Looker dashboards for analysis and forecasting
-* **Container:** Docker deployment environment
-* **Email Alert:** Failure notification system
+The pipeline orchestrates the flow from source API to data visualisation, ensuring data integrity at every place.
+
+* **Extraction:** Python client fetches transactions; Great Expectations validates schema.
+* **Loading:** Data is landed in BigQuery Bronze (Raw).
+* **Transformation:** dbt manages the Silver (Cleaned) and Gold (Aggregated) layers.
+* **Incremental Logic:** The Silver layer uses incremental materialisation, processing only new transactions since the last successful run to minimise BigQuery slot usage.
+* **Orchestration:** Apache Airflow (Astronomer) handles the DAG lifecycle with integrated dbt execution via Cosmos.
+**Data Visualization:** Looker Studio serves as the exploration layer, allowing users to query the BigQuery Gold tables to uncover spending trends, merchant behaviors, and historical financial patterns through interactive dashboards.
+
+## Key Technical Implementations
+
+---
+1. **Incremental Data Processing**
+
+To handle financial data efficiently, dbt models are configured with a merge strategy. By using the is_incremental() macro, the pipeline avoids full-table refreshes, significantly reducing GCP compute costs.
+
+2. **Multi-Layered Fail-Safes**
+
+* **Phase 1 (Ingestion):** Custom Python alerts via Gmail/SMTP for API authentication or schema validation failures.
+
+* **Phase 2 (Transformation):** dbt native tests (unique, not_null) coupled with Airflow's dependency management to stop the pipeline before bad data reaches the Gold layer.
+
+3. **Containerised Local Development**
+The entire stack is containerised using Docker and managed by Astronomer CLI, ensuring that the development environment is reproducible and 'cloud-ready'.
 
 ## Project Structure
 
@@ -75,8 +92,8 @@ GMAIL_PASSWORD = your-gmail-app-password
 # 1. Create and download JSON key
 - Click on service account > Keys > Add Key > Create New Key > JSON
 
-# 2. Place a key file in each of the project folders below:
-- dbt_astro/dags/dbt_monzo_analytics/creds/{GCP SERVICE ACCOUNT}.json
+# 2. Securely place your GCP JSON key at:
+- dbt_astro/dags/dbt_monzo_analytics/creds/your-service-account-key.json
 
 # 3. Update Dockerfile in the root folder to include the name of your service account name
 COPY dags/dbt_monzo_analytics/creds/your-service-account-key.json /app/creds/keyfile.json
@@ -96,54 +113,13 @@ cd airflow_dbt_bigquery
 ```bash
 astro dev start
 ```
+Access the Airflow UI at http://127.0.0.1:8080
 
-3. **Access Services**
-* Airflow: http://127.0.0.1:8080
-
-### Component Status
-
----
-
-1. Check service status
+3. **Check service status**
 
 ```bash
 astro dev logs --api-server
 ```
-
-### Components
-
----
-
-#### Monzo API Client
-* Authenticates and connects to Monzo banking API
-* Retrieves transaction and account data
-* Handles API rate limiting and error responses
-
-#### Extract & Load Pipeline
-
-* Python-based data extraction from Monzo API
-* Great Expectations validation for data quality checks
-* Loads raw data into BigQuery Bronze layer
-
-#### dbt Transformations
-
-* SQL-based transformations across medallion layers
-* Staging models clean and standardise raw data
-* Marts models create business-ready analytics tables
-* Built-in data quality tests and documentation
-
-#### Airflow Orchestrator
-
-* Schedules and manages end-to-end pipeline execution
-* Integrates Python extraction with dbt runs via Astronomer Cosmos
-* Email alerts for pipeline failures
-* Configurable retry logic and dependencies
-
-#### Looker Dashboards
-* Interactive visualizations for spending analysis
-* Trend analysis and forecasting capabilities
-* Direct connection to BigQuery Gold layer
-* Users can build custom dashboards based on their preferences and requirements
 
 ### Troubleshooting
 
