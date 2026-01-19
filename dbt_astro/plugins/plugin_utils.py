@@ -7,6 +7,11 @@ from env_variables import *
 import smtplib
 from plugin_variables import *
 
+def get_project_id():
+    with open(KEY_FILE_PATH, 'r') as f:
+        creds_data = json.load(f)
+        return creds_data['project_id']
+
 
 def fetch_account_data():
     accounts_data = get_account()
@@ -122,8 +127,8 @@ def send_email_failure(results):
 
     context = gx.get_context()
     message = EmailMessage()
-    message["To"] = "*@gmail.com"  # INSERT YOUR GMAIL ADDRESS
-    message["From"] = "*@gmail.com" # INSERT YOUR GMAIL ADDRESS
+    message["To"] = "*@gmail.com" # INSERT GMAIL ADDRESS HERE
+    message["From"] = "*@gmail.com" # INSERT GMAIL ADDRESS HERE
     x = datetime.datetime.now()
     message["Subject"] = f"Python Failure - {x.strftime('%Y-%m-%d %H:%M:%S')}"
     message.set_content(email_content)
@@ -133,6 +138,7 @@ def send_email_failure(results):
         smtp.send_message(message)
 
 def load_data(accounts_df, transactions_df_clean, balance_df):
+    project_id = get_project_id()
 
     # Delete tables before loading
     tables_to_truncate = ["raw_accounts", "raw_transactions", "raw_balance"]

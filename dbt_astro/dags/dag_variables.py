@@ -1,8 +1,9 @@
 import os
 from dag_utils import get_env_vars_from_connection
 
-CONNECTION_NAME = '{INSERT AIRFLOW CONNECTION NAME HERE}' #db_conn
-DATASET = '{INSERT DATASET NAME HERE}'
+
+CONNECTION_NAME = 'db_conn'
+DATASET = os.getenv("DATASET_ID")
 SERVICE_ACCOUNT_VARIABLES = get_env_vars_from_connection(conn_id=CONNECTION_NAME)
 
 

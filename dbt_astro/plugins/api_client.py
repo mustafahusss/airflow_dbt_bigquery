@@ -1,5 +1,5 @@
 import requests
-from config import MONZO_API_BASE, ACCESS_TOKEN, HEADERS
+from plugin_utils import MONZO_API_BASE, ACCESS_TOKEN, HEADERS
 from google.cloud import bigquery
 import json
 from google.oauth2 import service_account
