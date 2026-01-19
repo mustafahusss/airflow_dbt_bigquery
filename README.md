@@ -17,7 +17,7 @@ The pipeline orchestrates the flow from source API to data visualisation, ensuri
 * **Transformation:** dbt manages the Silver (Cleaned) and Gold (Aggregated) layers.
 * **Incremental Logic:** The Silver layer uses incremental materialisation, processing only new transactions since the last successful run to minimise BigQuery slot usage.
 * **Orchestration:** Apache Airflow (Astronomer) handles the DAG lifecycle with integrated dbt execution via Cosmos.
-**Data Visualization:** Looker Studio serves as the exploration layer, allowing users to query the BigQuery Gold tables to uncover spending trends, merchant behaviors, and historical financial patterns through interactive dashboards.
+* **Data Visualization:** Looker Studio serves as the exploration layer, allowing users to query the BigQuery Gold tables to uncover spending trends, merchant behaviors, and historical financial patterns through interactive dashboards.
 
 ## Key Technical Implementations
 
