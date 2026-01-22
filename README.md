@@ -86,13 +86,18 @@ GMAIL_PASSWORD = your-gmail-app-password
 ```
 **Service Account JSON Key**
 ```bash
-# 1. Create and download JSON key
+# Docker cannot work with BigQuery through the main Google Account, so we need to create a Service Account in our Google Cloud Tenant.
+
+# 1. Open up Google Cloud
+- Head to the Google Cloud Console > Select Project in the top left (with your BigQuery database)
+
+# 2. Create and download JSON key
 - Click on service account > Keys > Add Key > Create New Key > JSON
 
-# 2. Securely place your GCP JSON key at:
+# 3. Securely place your GCP JSON key at:
 - dbt_astro/dags/dbt_monzo_analytics/creds/your-service-account-key.json
 
-# 3. Update Dockerfile in the root folder to include the name of your service account name
+# 4. Update Dockerfile in the root folder to include the name of your service account name
 COPY dags/dbt_monzo_analytics/creds/your-service-account-key.json /app/creds/keyfile.json
 ```
 
