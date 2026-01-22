@@ -53,8 +53,10 @@ airflow_dbt_bigquery/
 │   │   └── requirements.txt        # DAG dependencies
 │   ├── plugins/
 │   │   ├── main.py                 # Monzo API extraction and loading
-│   │   ├── api_client.py           # Monzo API client
-│   │   └── env_variables.py        # Environment configuration
+│   │   ├── api_client.py           # Monzo API wrapper and BigQuery integration
+│   │   ├── env_variables.py        # Environment configuration
+│   │   ├── plugin_utils.py         # API helper functions and constants
+│   │   └── plugin_variables.py     # Configuration, credentials, and client initialisation
 │   └── tests/                      # Great Expectations data validation
 └── .venv1/                         # Python virtual environment
 ```
